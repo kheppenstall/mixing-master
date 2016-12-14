@@ -12,6 +12,7 @@ class PlaylistsController < ApplicationController
   def create
     @playlist = Playlist.new(playlist_params)
     if @playlist.save
+      flash.notice = "Playlist '#{@playlist.name}' Created!"
       redirect_to playlist_path(@playlist)
     else
       @errors = @playlist.errors
@@ -30,7 +31,14 @@ class PlaylistsController < ApplicationController
   end
 
   def update
-
+    @playlist = Playlist.find(params[:id])
+    if @playlist.update(playlist_params)
+      flash.notice = "Playlist '#{@playlist.name}' Updated!"
+      redirect_to playlist_path(@playlist)
+    else
+      @errors = @playlist.errors
+      render :edit
+    end
   end
 
   private

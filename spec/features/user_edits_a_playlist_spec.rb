@@ -14,12 +14,15 @@ RSpec.feature "User edits a play list" do
     visit playlist_path(playlist)
     click_on "Edit"
 
-    save_and_open_page
-    
+
     fill_in "playlist_name", with: new_name
+    check extra_song.title
+
     click_on "Update Playlist"
 
-    expect(page).to have_content(new_name)
+    expect(page).to have_content new_name
+    expect(page).to have_content extra_song.title
+
 
   end
 end
