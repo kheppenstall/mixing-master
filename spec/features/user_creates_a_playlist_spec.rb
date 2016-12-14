@@ -6,7 +6,8 @@ RSpec.feature "User creates a playlist" do
     song1, song2, song3, = create_list(:song, 3)
     playlist_name = "My Jams"
 
-    visit new_playlist_path
+    visit playlists_path
+    click_on "New Playlist"
 
     fill_in "playlist_name", with: playlist_name
 

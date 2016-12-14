@@ -11,14 +11,12 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = Playlist.new(playlist_params)
-    byebug
     if @playlist.save
       redirect_to playlist_path(@playlist)
+    else
+      @errors = @playlist.errors
+      render :new
     end
-    # else
-    #   @errors = @playlist.errors
-    #   render :new
-    # end
   end
 
   def show

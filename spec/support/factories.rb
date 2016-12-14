@@ -7,7 +7,7 @@ FactoryGirl.define do
 
   factory :song do
     title { Faker::Book.title }
-    artist Artist.new
+    artist FactoryGirl.create(:artist)
   end
 
   factory :playlist do
