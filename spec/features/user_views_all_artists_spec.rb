@@ -6,6 +6,7 @@ RSpec.feature "User views all artists" do
     artist = create(:artist)
     visit artists_path
 
+
     expect(page).to have_content artist.name 
   end
 
