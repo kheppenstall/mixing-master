@@ -8,7 +8,7 @@
   <div class="col-md-3">
     <h4>Songs</h4>
     <ul class="list-group">
-      <% @artist.songs.each do |song| %>
+      <% @artist.songs.sort_by{|song| song.title}.each do |song| %>
         <li class="list-group-item"><%= link_to song.title, song_path(song) %></li>
       <% end %>
     </ul>
