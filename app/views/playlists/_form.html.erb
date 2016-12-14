@@ -4,7 +4,7 @@
       <%= f.text_field :name %>
 
       <%= f.collection_check_boxes("song_ids", @songs, :id, :title) do |song| %>
-        <%= song.title { song.check_box} %>
+        <%= song.title { song.check_box } %>
       <% end %>
 
       <%= f.submit nil, :class => 'btn btn-success' %>

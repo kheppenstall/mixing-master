@@ -20,4 +20,16 @@ RSpec.feature "User creates a playlist" do
     expect(page).to have_link song1.title, href: song_path(song1)
     expect(page).to have_link song2.title, href: song_path(song2)  
   end
+
+  context "but enters invalid data" do
+    scenario "so an error is raised" do
+      
+      visit playlists_path
+
+      click_on "New Playlist"
+      click_on "Create Playlist"
+
+      expect(page).to have_content "Name can't be blank"
+    end
+  end
 end

@@ -15,12 +15,22 @@ class PlaylistsController < ApplicationController
       redirect_to playlist_path(@playlist)
     else
       @errors = @playlist.errors
+      @songs = Song.all
       render :new
     end
   end
 
   def show
     @playlist = Playlist.find(params[:id])
+  end
+
+  def edit
+    @playlist = Playlist.find(params[:id])
+    @songs = Song.all
+  end
+
+  def update
+
   end
 
   private
