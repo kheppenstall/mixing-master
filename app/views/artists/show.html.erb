@@ -1,12 +1,23 @@
-<h1><%= @artist.name %></h1>
+<h2><%= @artist.name %></h2>
 
 <div class="container">
 <%= image_tag @artist.image_path %>
 </div>
 
 <div class="container">
-  </br>
-  <%= link_to "All Artists", artists_path, class:"btn btn-primary"%></br><br>
-  <%= link_to "Edit", edit_artist_path(@artist), class:"btn btn-warning"%></br><br>
+  <div class="col-md-3">
+    <h4>Songs</h4>
+    <ul class="list-group">
+      <% @artist.songs.each do |song| %>
+        <li class="list-group-item"><%= link_to song.title, song_path(song) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <%= link_to "All Artists", artists_path, class:"btn btn-primary"%>
+  <%= link_to "Edit", edit_artist_path(@artist), class:"btn btn-warning"%>
   <%= link_to "Delete", artist_path(@artist), method: :delete, class:"btn btn-danger", data: {confirm: "Are you sure?"}%>
+  <%= link_to "New Song", new_artist_song_path(@artist), class:"btn btn-success"%>
 </div>
