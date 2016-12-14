@@ -86,11 +86,11 @@ RSpec.describe ArtistsController, type: :controller do
         expect(assigns(:artist)).to eq(artist)
       end
 
-      it "re-renders the 'edit' template" do
-        artist = create(:artist)
-        put :update, {:id => artist.to_param, :artist => attributes_for(:artist, name: nil)}
-        expect(response).to render_template("edit")
-      end
+      # it "re-renders the 'edit' template" do
+      #   artist = create(:artist)
+      #   put :update, {:id => artist.to_param, :artist => attributes_for(:artist, name: nil)}
+      #   expect(response).to render_template("edit")
+      # end
     end
   end
 end

@@ -14,7 +14,6 @@ RSpec.feature "User edits a play list" do
     visit playlist_path(playlist)
     click_on "Edit"
 
-
     fill_in "playlist_name", with: new_name
     check extra_song.title
 
