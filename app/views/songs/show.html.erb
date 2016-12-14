@@ -1,2 +1,9 @@
 <h2>Song: <%= @song.title %></h2>
 <h2>Artist: <%= link_to @song.artist.name, artist_path(@song.artist) %></h2>
+
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <%= link_to "All Songs", songs_path, class:"btn btn-primary"%>
+  <%= link_to "Edit", edit_artist_song_path(@song.artist, @song), class:"btn btn-warning"%>
+  <%= link_to "Delete", song_path(@song), method: :delete, class:"btn btn-danger", data: {confirm: "Are you sure?"}%>
+  <%= link_to @song.artist.name, artist_path(@song.artist), class:"btn btn-success"%>
+</div>

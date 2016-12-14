@@ -22,7 +22,22 @@ class SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
+    @songs = Song.all.sort_by{|song| song.title}
+  end
+
+  def edit
+    @song = Song.find(params[:id])
+    @artist = Artist.find(params[:artist_id])
+  end
+
+  def update
+    @song = Song.find(params[:id])
+    if @song.update(song_params)
+      redirect_to song_path(@song)
+    else
+      @errors = @song.errors
+      render :edit
+    end
   end
 
   private
@@ -30,9 +45,5 @@ class SongsController < ApplicationController
   def song_params
     params.require(:song).permit(:title)
   end
-
-
-
-
 
 end
