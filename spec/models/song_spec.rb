@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe Song, type: :model do
   context "validations" do
     it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_presence_of(:artist) }
+  end
+  
+  context "associations" do
+    it { should belongs_to(:artist)}
+    it { should have_many(:playlist_songs)}
+    it { should have_many(:playlists).through(:playlist_songs)}
   end
 end
