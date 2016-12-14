@@ -1,13 +1,13 @@
 FactoryGirl.define do
 
   factory :artist do
-    name       { Faker::Superhero.name }
+    name       { Faker::Name.name }
     image_path { Faker::Avatar.image }
   end
 
   factory :song do
     title { Faker::Book.title }
-    artist FactoryGirl.create(:artist)
+    artist { FactoryGirl.create(:artist) }
   end
 
   factory :playlist do
