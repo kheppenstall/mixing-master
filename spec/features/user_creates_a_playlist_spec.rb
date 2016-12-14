@@ -9,8 +9,10 @@ RSpec.feature "User creates a playlist" do
     visit new_playlist_path
 
     fill_in "playlist_name", with: playlist_name
+
     check(song1.title)
     check(song2.title)
+    
     
     click_on "Create Playlist"
 

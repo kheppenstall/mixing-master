@@ -10,8 +10,25 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    
-    
+    @playlist = Playlist.new(playlist_params)
+    byebug
+    if @playlist.save
+      redirect_to playlist_path(@playlist)
+    end
+    # else
+    #   @errors = @playlist.errors
+    #   render :new
+    # end
+  end
+
+  def show
+    @playlist = Playlist.find(params[:id])
+  end
+
+  private
+
+  def playlist_params
+    params.require(:playlist).permit(:name, song_ids: [])
   end
 
 end

@@ -1,0 +1,19 @@
+<h2><%= @playlist.name %></h2>
+
+<div class="container">
+  <div class="col-md-6">
+    <ul class="list-group">
+      <% @playlist.songs.each do |song| %>
+        <li class="list-group-item"><%= link_to song.title, song_path(song) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <%= link_to "Edit", edit_playlist_path(@playlist), class:"btn btn-warning"%>
+    <%= link_to "Delete", playlist_path(@playlist), method: :delete, class:"btn btn-danger", data: {confirm: "Are you sure?"}%>
+    <%= link_to "All Playlists", playlists_path, class:"btn btn-primary"%>
+  </div>
+</div>

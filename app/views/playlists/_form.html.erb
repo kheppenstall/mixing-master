@@ -3,7 +3,10 @@
     <%= bootstrap_form_for(@playlist) do |f| %>
       <%= f.text_field :name %>
 
-     
+      <%= f.collection_check_boxes("song_ids", @songs, :id, :title) do |song| %>
+        <%= song.title { song.check_box} %>
+      <% end %>
+
       <%= f.submit nil, :class => 'btn btn-success' %>
     <% end %>
   </div>
