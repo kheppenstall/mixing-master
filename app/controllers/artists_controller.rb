@@ -11,6 +11,7 @@ class ArtistsController < ApplicationController
   def create
     @artist = Artist.new(artist_params)
     if @artist.save
+      flash.notice = "Artist '#{@artist.name}' Created!"
       redirect_to artist_path(@artist)
     else
       @errors = @artist.errors
@@ -29,6 +30,7 @@ class ArtistsController < ApplicationController
   def update
     @artist = Artist.find(params[:id])
     if @artist.update(artist_params)
+      flash.notice = "Artist '#{@artist.name}' Updated!"
       redirect_to @artist
     else
       @errors = @artist.errors
